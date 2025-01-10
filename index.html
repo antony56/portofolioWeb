@@ -1,61 +1,89 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+    />
     <title>Portofolio Website</title>
-</head>
-<body>
+  </head>
+  <body>
+    <header class="header">
+      <a href="#" class="logo">
+        <span>Ntokos Antonios</span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="#about">About </a></li>
+        <li><a href="#experience">Experience </a></li>
+        <li><a href="#projects">Projects </a></li>
+        <li><a href="#contact">Contact </a></li>
 
+        <i class="fa-solid fa-bars" id="menu-icon"></i>
 
-    <header class="header"> 
-
-<a href="#" class="logo">
-    <span>Ntokos Antonios</span>
-</a>
-<ul class="nav-links">
-<li><a href="#about">About </a></li>
-<li><a href="#experience">Experience </a></li>
-<li><a href="#projects">Projects </a></li>
-<li><a href="#contact">Contact </a></li>
-
-
-<i class="fa-solid fa-bars" id="menu-icon"></i>
-
-<button class="visit-btn">Visit Github</button>
-
-</ul>
-        
+        <button class="visit-btn">Visit Github</button>
+      </ul>
     </header>
 
-
     <section id="about" class="about">
-<div class="about-container">
-    <img src="random22.png" alt="">
-<div class="info-box">
-    <div class="text">
-        <h3>hi , i am </h3>
-        <h1> Antony Ntokos</h1>
-        <span>Frontend Developer</span>
-    </div>
+      <div class="about-container">
+        <img src="random22.png" alt="" />
+        <div class="info-box">
+          <div class="text">
+            <h3>hi , i am</h3>
+            <h1>Antony Ntokos</h1>
+            <span>Frontend Developer</span>
+          </div>
 
-    <div class="btn-group">
-        <div class="btn">Download CV</div>
-        <div class="btn">Contact me</div>
+          <div class="btn-group">
+            <div class="btn">Download CV</div>
+            <div class="btn">Contact me</div>
+          </div>
 
-    </div>
+          <div class="social">
+            <i class="fa-brands fa-github"></i>
+            <i class="fa-brands fa-linkedin"></i>
+          </div>
+        </div>
+      </div>
+    </section>
 
-    <div class="social">
-        <i class="fa-brands fa-github"></i>
-        <i class="fa-brands fa-linkedin"></i></div>
-</div>
+    <section id="experience" class="experience">
+      <h2 class="section-title">Experience</h2>
 
-</div>
-
+      <div class="experience-info">
+        <div class="grid">
+          <div class="grid-card">
+            <i class="fa-solid fa-code"></i>
+            <span>Frontend Development</span>
+            <h3>1 Years</h3>
+            <p>Lorem ipsum dolor sit amet.Lorem ipsum dolor sit amet</p>
+          </div>
+          <div class="grid-card">
+            <i class="fa-brands fa-superpowers"></i>
+            <span>1</span>
+            <h3>2 Years</h3>
+            <p>Lorem ipsum dolor sit amet.Lorem ipsum dolor sit amet</p>
+          </div>
+          <div class="grid-card">
+            <i class="fa-brands fa-superpowers"></i>
+            <span>3</span>
+            <h3>1 Years</h3>
+            <p>Lorem ipsum dolor sit amet.Lorem ipsum dolor sit amet</p>
+          </div>
+          <div class="grid-card">
+            <i class="fa-brands fa-superpowers"></i>
+            <span>4</span>
+            <h3>1 Years</h3>
+            <p>Lorem ipsum dolor sit amet.Lorem ipsum dolor sit amet</p>
+          </div>
+        </div>
+        <img src="random22.png" alt="" />
+      </div>
     </section>
 
     <script src="script.js"></script>
-</body>
+  </body>
 </html>
