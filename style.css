@@ -8,6 +8,23 @@
   list-style: none;
 }
 
+body {
+  background-color: var(--background-color-light);
+  color: var(--text-color-light);
+}
+
+.dark-mode {
+  background-color: var(--background-color-dark);
+  color: var(--text-color-dark);
+}
+
+:root {
+  --background-color-light: #ffffff;
+  --text-color-light: #000000;
+  --background-color-dark: #332e2e;
+  --text-color-dark: #ffffff;
+}
+
 header {
   position: fixed;
   top: 1rem;
@@ -226,6 +243,7 @@ section {
   font-size: 1.5rem;
   font-weight: 500;
   background: linear-gradient(to right, #009dff, #ff00ff);
+
   background-clip: text;
   color: transparent;
 }
