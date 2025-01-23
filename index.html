@@ -20,11 +20,14 @@
         <li><a href="#experience">Experience </a></li>
         <li><a href="#projects">Projects </a></li>
         <li><a href="#contact">Contact </a></li>
+        <li><a href="#edu">Education & Certifications </a></li>
 
         <a href="https://github.com/antony56" target="_blank">
           <button class="visit-btn">Visit Github</button></a
         >
       </ul>
+      sadsadsadas
+
       <i class="fa-solid fa-bars" id="menu-icon"></i>
     </header>
 
@@ -39,7 +42,10 @@
           </div>
 
           <div class="btn-group">
-            <div class="btn">Download CV</div>
+            <a href="antCv24.pdf" target="_blank">
+              <div class="btn" id="document2">Review my CV</div>
+            </a>
+
             <div class="btn">Contact me</div>
           </div>
 
@@ -59,26 +65,17 @@
           <div class="grid-card">
             <i class="fa-solid fa-code"></i>
             <span>Frontend Development</span>
-            <h3>1 Years</h3>
-            <p>Lorem ipsum dolor sit amet.Lorem ipsum dolor sit amet</p>
+
+            <h3>Jun 2024 - Present</h3>
+            <h2>Impact - SoftOne Technologies S.A Athens</h2>
+            <p>Full-time</p>
           </div>
           <div class="grid-card">
             <i class="fa-brands fa-superpowers"></i>
-            <span>1</span>
-            <h3>2 Years</h3>
-            <p>Lorem ipsum dolor sit amet.Lorem ipsum dolor sit amet</p>
-          </div>
-          <div class="grid-card">
-            <i class="fa-brands fa-superpowers"></i>
-            <span>3</span>
-            <h3>1 Years</h3>
-            <p>Lorem ipsum dolor sit amet.Lorem ipsum dolor sit amet</p>
-          </div>
-          <div class="grid-card">
-            <i class="fa-brands fa-superpowers"></i>
-            <span>4</span>
-            <h3>1 Years</h3>
-            <p>Lorem ipsum dolor sit amet.Lorem ipsum dolor sit amet</p>
+            <span>ERP Consultant</span>
+            <h3>Oct 2022 – Jun 2024· 1 year 5 months</h3>
+            <h2>SoftOne Technologies S.A Athens</h2>
+            <p>Full-time</p>
           </div>
         </div>
         <img src="random22.png" alt="" />
@@ -102,8 +99,12 @@
             >
               <div class="btn">Live Demo</div></a
             >
-
-            <div class="btn">GitHub Repo</div>
+            <a
+              href="https://github.com/antony56/WeatherAppJs.github.io"
+              target="_blank"
+            >
+              <div class="btn">GitHub Repo</div></a
+            >
           </div>
         </div>
 
@@ -135,15 +136,43 @@
       </div>
     </section>
 
+    <section>
+      <div id="edu">
+        <h2 class="section-title">education + certifications</h2>
+      </div>
+    </section>
     <section class="contanct" id="contact">
       <div class="input-box">
         <h2 class="section-title">Contact Me</h2>
+        <form
+          class="input-box"
+          action="https://formsubmit.co/antony.nt@hotmail.com"
+          method="POST"
+        >
+          <div class="input">
+            <input
+              type="email"
+              name="email"
+              placeholder="Enter your Email Address"
+              required
+            />
+            <i class="fa-solid fa-envelope"></i>
+          </div>
 
-        <div class="input">
-          <input type="text" placeholder="example@email.com" />
-          <i class="fa-solid fa-envelope"></i>
-        </div>
-        <div class="btn">Submit</div>
+          <div class="input">
+            <input
+              type="text"
+              name="message"
+              required
+              placeholder="Write your message here"
+            />
+
+            <i class="fa-regular fa-comment"></i>
+          </div>
+
+          <input type="hidden" name="_captcha" value="false" />
+          <button class="btn" type="submit">Submit</button>
+        </form>
       </div>
     </section>
 
