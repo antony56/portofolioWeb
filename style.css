@@ -14,8 +14,22 @@ body {
 }
 
 .dark-mode {
-  background-color: var(--background-color-dark);
+  background: linear-gradient(to right, #897974, #b98965);
+
+  /* background-color: var(--background-color-dark); */
   color: var(--text-color-dark);
+}
+
+.dark-mode .myName2 {
+  color: #6c1818;
+}
+
+.dark-mode .visit-btn {
+  background: linear-gradient(to right, rgb(255, 136, 0), rgb(255, 0, 85));
+}
+
+.dark-mode .visit-btn:hover {
+  background: linear-gradient(to right, rgb(255, 0, 85), rgb(255, 136, 0));
 }
 
 :root {
@@ -203,7 +217,7 @@ section {
 }
 
 .experience img {
-  width: 24vw;
+  width: 10vw;
   border-radius: 3rem;
 }
 
@@ -261,7 +275,7 @@ section {
 
 .projects-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
   gap: 2rem;
 }
 
