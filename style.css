@@ -13,6 +13,76 @@ body {
   color: var(--text-color-light);
 }
 
+.certifications {
+  padding: 2rem;
+}
+
+.cert-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+}
+
+.cert-card {
+  padding: 1rem;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 1);
+}
+
+.cert-card h3 {
+  font-size: 1.2rem;
+  margin-bottom: 0.3rem;
+}
+
+.cert-org {
+  font-weight: 500;
+  color: #555;
+  margin-bottom: 0.8rem;
+}
+
+.education-card {
+  display: flex;
+  flex-direction: row;
+  gap: 1.5rem;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 1);
+  padding: 25px;
+}
+
+.edu-logo img {
+  width: 550px;
+  height: auto;
+  object-fit: contain;
+}
+
+.edu-details {
+  max-width: 700px;
+}
+
+.edu-details h3 {
+  margin: 0;
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+.edu-details .degree {
+  font-weight: 500;
+  margin: 0.25rem 0;
+}
+
+.edu-details .years {
+  color: #777;
+  margin-bottom: 1rem;
+}
+
+.project-card img {
+  display: block;
+  margin: 0 auto;
+  max-width: 100%;
+  height: auto;
+}
+
 .dark-mode {
   background-color: var(--background-color-dark);
   color: var(--text-color-dark);
@@ -121,8 +191,8 @@ section {
 }
 
 .about img {
-  width: 30vh;
-  border-radius: 50%;
+  width: 40vh;
+  border-radius: 35%;
 }
 
 .info-box {
@@ -315,8 +385,8 @@ section {
 }
 
 .input-box input {
-  border-radius: 3rem;
-  border: 2px solid black;
+  border-radius: 2rem;
+  border: 1px solid black;
   padding: 2rem 8rem;
   font-size: 3rem;
 }
