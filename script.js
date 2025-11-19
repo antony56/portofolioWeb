@@ -6,39 +6,121 @@
 const menuIcon = document.querySelector('#menu-icon');
 const navLinks = document.querySelector('.nav-links');
 const darkModeToggle = document.querySelector('#dark-mode-toggle');
+const starsCanvas = document.getElementById('stars-canvas');
 
 // ========================================
 // 1. MOBILE MENU TOGGLE (Κινητό μενού)
 // ========================================
-menuIcon.onclick = () => {
-  navLinks.classList.toggle('active');
-};
+if (menuIcon) {
+  menuIcon.onclick = () => {
+    navLinks.classList.toggle('active');
+  };
+}
 
 // Κλείσιμο μενού όταν κάνουμε κλικ έξω από αυτό
 document.addEventListener('click', (e) => {
-  if (!menuIcon.contains(e.target) && !navLinks.contains(e.target)) {
+  if (navLinks && menuIcon && !menuIcon.contains(e.target) && !navLinks.contains(e.target)) {
     navLinks.classList.remove('active');
   }
 });
+
+// Κλείσιμο μενού όταν κάνουμε κλικ σε ένα link
+if (navLinks) {
+  const navLinksItems = navLinks.querySelectorAll('a');
+  navLinksItems.forEach(link => {
+    link.addEventListener('click', () => {
+      if (window.innerWidth <= 600) {
+        navLinks.classList.remove('active');
+      }
+    });
+  });
+}
 
 // ========================================
 // 2. ENHANCED DARK MODE (Βελτιωμένο σκοτεινό θέμα)
 // ========================================
 function toggleDarkMode() {
-  // Εναλλαγή του dark-mode class στο body
-  let isDark = document.body.classList.toggle('dark-mode');
-  
-  // Αποθήκευση της επιλογής στο localStorage
-  localStorage.setItem('darkMode', isDark ? 'enabled' : 'disabled');
-
-  // Ενημέρωση του κειμένου του κουμπιού
-  darkModeToggle.textContent = isDark ? 'Light Mode' : 'Dark Mode';
+  const body = document.body;
+  const isCurrentlyDark = body.classList.contains('dark-mode');
+  if (isCurrentlyDark) {
+    body.classList.remove('dark-mode');
+    body.classList.add('light-mode');
+    localStorage.setItem('theme', 'light');
+    darkModeToggle.textContent = 'Dark Mode';
+  } else {
+    body.classList.remove('light-mode');
+    body.classList.add('dark-mode');
+    localStorage.setItem('theme', 'dark');
+    darkModeToggle.textContent = 'Light Mode';
+  }
   
   // Προσθήκη animation στο κουμπί
   darkModeToggle.style.transform = 'scale(1.1)';
   setTimeout(() => {
     darkModeToggle.style.transform = 'scale(1)';
   }, 200);
+}
+
+// ========================================
+// 2b. THREE.JS STARFIELD (Lightweight version)
+// ========================================
+function initStarfield() {
+  if (!starsCanvas) return;
+  const ctx = starsCanvas.getContext('2d');
+  let width = starsCanvas.width = starsCanvas.offsetWidth;
+  let height = starsCanvas.height = starsCanvas.offsetHeight;
+
+  // Create particles
+  const numStars = Math.floor((width * height) / 8000);
+  const stars = Array.from({ length: numStars }, () => ({
+    x: Math.random() * width,
+    y: Math.random() * height,
+    z: Math.random() * 0.8 + 0.2,
+    r: Math.random() * 1.2 + 0.2
+  }));
+
+  function draw() {
+    ctx.clearRect(0, 0, width, height);
+    // subtle gradient backdrop that adapts to theme
+    const isLight = document.body.classList.contains('light-mode');
+    const g = ctx.createLinearGradient(0, 0, width, height);
+    if (isLight) {
+      g.addColorStop(0, 'rgba(255,255,255,0.6)');
+      g.addColorStop(1, 'rgba(247,248,251,0.6)');
+    } else {
+      g.addColorStop(0, 'rgba(12,12,20,0.2)');
+      g.addColorStop(1, 'rgba(8,8,15,0.2)');
+    }
+    ctx.fillStyle = g;
+    ctx.fillRect(0, 0, width, height);
+
+    for (const s of stars) {
+      const speed = 0.2 + s.z * 0.6;
+      s.x += speed;
+      if (s.x > width + 2) s.x = -2, s.y = Math.random() * height;
+
+      // star glow
+      ctx.beginPath();
+      const violetAlpha = isLight ? (0.25 + s.z * 0.5) : (0.2 + s.z * 0.6);
+      const tealAlpha = isLight ? (0.18 + s.z * 0.35) : (0.12 + s.z * 0.4);
+      ctx.fillStyle = `rgba(124,58,237,${violetAlpha})`;
+      ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
+      ctx.fill();
+      ctx.beginPath();
+      ctx.fillStyle = `rgba(20,184,166,${tealAlpha})`;
+      ctx.arc(s.x, s.y, s.r * 0.6, 0, Math.PI * 2);
+      ctx.fill();
+    }
+    requestAnimationFrame(draw);
+  }
+
+  function onResize() {
+    width = starsCanvas.width = starsCanvas.offsetWidth;
+    height = starsCanvas.height = starsCanvas.offsetHeight;
+  }
+
+  window.addEventListener('resize', onResize);
+  draw();
 }
 
 // ========================================
@@ -156,10 +238,16 @@ function smoothScrollTo(target) {
 
 // Όταν φορτώνει η σελίδα
 document.addEventListener('DOMContentLoaded', (event) => {
-  // Επαναφορά του dark mode από localStorage
-  if (localStorage.getItem('darkMode') === 'enabled') {
-    document.body.classList.add('dark-mode');
+  // Επαναφορά θέματος από localStorage ή προτίμηση συστήματος
+  const storedTheme = localStorage.getItem('theme');
+  const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+  const body = document.body;
+  if (storedTheme === 'dark' || (!storedTheme && prefersDark)) {
+    body.classList.add('dark-mode');
     darkModeToggle.textContent = 'Light Mode';
+  } else {
+    body.classList.add('light-mode');
+    darkModeToggle.textContent = 'Dark Mode';
   }
   
   // Έναρξη typing animation για το όνομα
@@ -180,6 +268,18 @@ document.addEventListener('DOMContentLoaded', (event) => {
       smoothScrollTo(target);
     });
   });
+
+  // Init starfield
+  initStarfield();
+
+  // Reveal animations
+  const revealables = document.querySelectorAll('.reveal, section, .project-card, .education-card, .cert-card, .grid-card');
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) entry.target.classList.add('is-visible');
+    });
+  }, { threshold: 0.1 });
+  revealables.forEach((el) => io.observe(el));
 });
 
 // Scroll events
